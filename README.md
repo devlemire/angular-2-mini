@@ -14,7 +14,56 @@ In this step, we'll create a service file and move the local user data from the 
 
 ### Instructions
 
+* Create a new javascript file called `service.js` in `js/`.
+* Open `js/service.js`.
+* Create a new Angular service called `mainService`.
+* Open `js/controller.js` and copy the value of `$scope.users` and then delete `$scope.users`.
+* In `js/service.js` create a new variable called `data` and paste the value from your clipboard. 
+
 ### Solution
+
+<details>
+
+<summary> <code> js/controller.js </code> </summary>
+
+```js
+angular.module('userProfiles').controller('MainController', function($scope) {
+
+});
+```
+
+</details>
+
+<details>
+
+<summary> <code> js/service.js </code> </summary>
+
+```js
+angular.module('userProfiles').service('mainService', function() {
+  var data = [
+    {
+      "id": 0,
+      "first_name": "george",
+      "last_name": "bluth",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg"
+    },
+    {
+      "id": 1,
+      "first_name": "lucille",
+      "last_name": "bluth",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg"
+    },
+    {
+      "id": 2,
+      "first_name": "oscar",
+      "last_name": "bluth",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg"
+    }
+  ];
+});
+```
+
+</details>
 
 ## Step 2
 
