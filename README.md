@@ -4,7 +4,37 @@
 
 In this project, we'll cover how to use Angular services to separate the management of data from the controller. We'll also cover how to use `$http` to fetch data from a live API. 
 
+Live example: <a href="#">Click Me!</a>
 
+## Step 1
+
+### Summary
+
+In this step, we'll create a service file and move the local user data from the controller into it.
+
+### Instructions
+
+### Solution
+
+## Step 2
+
+### Summary
+
+In this step, we'll add a method to the service that provides the local user data. We'll then update the controller to use this service method.
+
+### Instructions
+
+### Solution
+
+## Step 3
+
+### Summary
+
+In this step, we'll modify the service to use `$http` to get data from a live API.
+
+### Instructions
+
+### Solution
 
 ## Contributions
 
