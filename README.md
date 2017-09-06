@@ -172,7 +172,7 @@ In this step, we'll modify the service to use `$http` to get data from a live AP
 * Modify the `getUsers` method to `return` a `$http` GET call to `https://reqres.in/api/users?page=1`.
 * Open `js/controller.js`.
 * Delete `$scope.users` and instead call `mainService.getUsers()`.
-* Catch the promise's response and set the value of `response.data.data` to `$scope.users`.
+  * Catch the promise's response and set the value of `response.data.data` to `$scope.users`.
 
 ### Solution
 
