@@ -162,11 +162,51 @@ angular.module('userProfiles').controller('MainController', function($scope, mai
 
 ### Summary
 
-In this step, we'll modify the service to use `$http` to get data from a live API.
+In this step, we'll modify the service to use `$http` to get data from a live API. We'll also have to modify our controller to handle the promise of fetching live data.
 
 ### Instructions
 
+* Open `js/service.js`.
+* Import `$http` into the service.
+* Delete the local data variable.
+* Modify the `getUsers` method to `return` a `$http` GET call to `https://reqres.in/api/users?page=1`.
+* Open `js/controller.js`.
+* Delete `$scope.users` and instead call `mainService.getUsers()`.
+* Catch the promise's response and set the value of `response.data.data` to `$scope.users`.
+
 ### Solution
+
+<details>
+
+<summary> <code> js/service.js </code> </summary>
+
+```js
+angular.module('userProfiles').service('mainService', function( $http ) {
+  this.getUsers = function() {
+    return $http({
+      method: 'GET',
+      url: 'https://reqres.in/api/users?page=1'
+    });
+  };
+});
+```
+
+</details>
+
+<details>
+
+<summary> <code> js/controller.js </code> </summary>
+
+```js
+angular.module('userProfiles').controller('MainController', function($scope, mainService) {
+  mainService.getUsers().then( function( response ) {
+    console.log( response );
+    $scope.users = response.data.data;
+  });
+});
+```
+
+</details>
 
 ## Contributions
 
