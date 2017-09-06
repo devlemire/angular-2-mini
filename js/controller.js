@@ -1,3 +1,3 @@
-angular.module('userProfiles').controller('MainController', function($scope) {
-
+angular.module('userProfiles').controller('MainController', function($scope, mainService) {
+  $scope.users = mainService.getUsers();
 });

@@ -19,6 +19,8 @@ In this step, we'll create a service file and move the local user data from the 
 * Create a new Angular service called `mainService`.
 * Open `js/controller.js` and copy the value of `$scope.users` and then delete `$scope.users`.
 * In `js/service.js` create a new variable called `data` and paste the value from your clipboard. 
+* Open `index.html`.
+* Add a new `script` tag for `js/service.js`.
 
 ### Solution
 
@@ -65,6 +67,34 @@ angular.module('userProfiles').service('mainService', function() {
 
 </details>
 
+<details>
+
+<summary> <code> index.html </code> </summary>
+
+```html
+<!DOCTYPE html>
+<html ng-app="userProfiles">
+  <head>
+    <title>User Profiles</title>
+  </head>
+
+  <body ng-controller="MainController">
+    <div ng-repeat="user in users">
+      <h1>{{user.first_name}} {{user.last_name}}</h1>
+      <img src="{{user.avatar}}">
+      <hr>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/service.js"></script>
+  </body>
+</html>
+```
+
+</details>
+
 ## Step 2
 
 ### Summary
@@ -73,7 +103,60 @@ In this step, we'll add a method to the service that provides the local user dat
 
 ### Instructions
 
+* Open `js/service.js`.
+* Create a method on the service called `getUsers` that returns `data`.
+* Open `js/controller.js`.
+* Import the service into the controller.
+* Create a new `$scope` variable called `users` that calls the `getUser` method.
+
 ### Solution
+
+<details>
+
+<summary> <code> js/service.js </code> </summary>
+
+```js
+angular.module('userProfiles').service('mainService', function() {
+  var data = [
+    {
+      "id": 0,
+      "first_name": "george",
+      "last_name": "bluth",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg"
+    },
+    {
+      "id": 1,
+      "first_name": "lucille",
+      "last_name": "bluth",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg"
+    },
+    {
+      "id": 2,
+      "first_name": "oscar",
+      "last_name": "bluth",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg"
+    }
+  ];
+
+  this.getUsers = function() {
+    return data;
+  };
+});
+```
+
+</details>
+
+<details>
+
+<summary> <code> js/controller.js </code> </summary>
+
+```js
+angular.module('userProfiles').controller('MainController', function($scope, mainService) {
+  $scope.users = mainService.getUsers();
+});
+```
+
+</details>
 
 ## Step 3
 
